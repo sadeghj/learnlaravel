@@ -2,6 +2,8 @@
 use App\Model\Comments;
 use App\User;
 use App\Roles;
+
+use Carbon\Carbon;
 use Egulias\EmailValidator\Exception\UnopenedComment;
 use Illuminate\Support\Facades\Auth;
 
@@ -182,7 +184,7 @@ Route::get('/user/role', ['middleware'=>['Role'],function () {
 
 //Sessions
 
-Route::get('/session','PostController@index');
+Route::get('/session','CommentsController@index');
 
 
 
@@ -248,4 +250,30 @@ Route::get('/user/{id}/rolesync', function ($id) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/post', 'PostController');
+Route::resource('/commentsitem', 'CommentsController');
+
+// date
+Route::get('/date',function(){
+
+    $date=new DateTime("+1 year");
+    return $date->format('d-m-y h:i:m');
+});
+
+Route::get('/carbon',function(){
+
+    // $carbon=Carbon::now()->addDay(+2);
+    // return $carbon->diffForHumans();
+    //  $carbon=Carbon::now()->addMonth(-10);
+    // $carbon=Carbon::now()->addYear(-10);
+     //$carbon=Carbon::now()->subMonth(1);
+    //   $carbon=Carbon::now()->Yesterday();
+    $carbon=Carbon::now()->Tomorrow();
+    return $carbon;
+});
+
+Route::get('/attributes',function(){
+
+    $comment= Comments::findOrFail(2);
+    return $comment->commenttext;
+});
+
