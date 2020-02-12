@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 08, 2020 at 08:20 AM
+-- Generation Time: Feb 12, 2020 at 07:18 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.2
 
@@ -32,19 +32,22 @@ CREATE TABLE `comments` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `fileimage` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `commenttext`, `created_at`, `updated_at`, `deleted_at`, `user_id`) VALUES
-(2, 'hello i am one comment', '2020-02-05 00:48:46', '2020-02-06 04:29:04', NULL, 1),
-(8, 'hasan text comments', '2020-02-05 11:18:41', '2020-02-05 11:18:41', NULL, 7),
-(9, 'hello and welcome', '2020-02-06 04:10:31', '2020-02-06 04:31:17', '2020-02-06 04:31:17', 1),
-(10, 'update text end', '2020-02-06 04:13:59', '2020-02-06 12:15:52', NULL, 1),
-(11, 'hello I am 7 User', '2020-02-06 10:57:13', '2020-02-06 10:57:13', NULL, 7);
+INSERT INTO `comments` (`id`, `commenttext`, `created_at`, `updated_at`, `deleted_at`, `user_id`, `fileimage`) VALUES
+(2, 'hello i am one comment', '2020-02-05 00:48:46', '2020-02-06 04:29:04', NULL, 1, NULL),
+(34, 'SFVDF', '2020-02-12 00:23:32', '2020-02-12 00:23:32', NULL, 8, 'laravel-logo-png-transparent.png'),
+(35, 'SFVDF', '2020-02-12 00:24:01', '2020-02-12 00:24:01', NULL, 8, 'laravel-logo-png-transparent.png'),
+(36, 'FLKN', '2020-02-12 10:22:56', '2020-02-12 10:22:56', NULL, 8, NULL),
+(37, 'ASDASDASDA', '2020-02-12 10:24:26', '2020-02-12 10:24:26', NULL, 8, NULL),
+(38, 'ALIALIALI', '2020-02-12 11:33:25', '2020-02-12 11:33:25', NULL, 8, 'laravel-logo-1024x683.jpg'),
+(39, 'ALIALIALI', '2020-02-12 12:18:16', '2020-02-12 12:18:16', NULL, 8, 'laravel-logo-1024x683.jpg');
 
 -- --------------------------------------------------------
 
@@ -155,17 +158,18 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL
+  `deleted_at` datetime DEFAULT NULL,
+  `path` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin', '', '2020-02-04 20:30:00', '', NULL, NULL, NULL, NULL),
-(7, 'hasan2', 'hasan2@local.com', NULL, 'adsd@334', NULL, '2020-02-05 04:06:30', '2020-02-05 04:21:36', NULL),
-(8, 'sadegh', 'sadeghj.work@gmail.com', NULL, '$2y$10$xb8QgZkxD6NCivTQ43m71ez/RlzPbvcpSnS9T7E/Um32xA0nvOhpu', NULL, '2020-02-05 17:54:17', '2020-02-05 17:54:17', NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `path`) VALUES
+(1, 'admin', '', '2020-02-04 20:30:00', '', NULL, NULL, NULL, NULL, NULL),
+(7, 'hasan2', 'hasan2@local.com', NULL, 'adsd@334', NULL, '2020-02-05 04:06:30', '2020-02-05 04:21:36', NULL, NULL),
+(8, 'sadegh', 'sadeghj.work@gmail.com', NULL, '$2y$10$xb8QgZkxD6NCivTQ43m71ez/RlzPbvcpSnS9T7E/Um32xA0nvOhpu', NULL, '2020-02-05 17:54:17', '2020-02-05 17:54:17', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -224,7 +228,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
