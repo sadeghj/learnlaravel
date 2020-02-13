@@ -2,6 +2,9 @@
 use App\Model\Comments;
 use App\User;
 use App\Roles;
+use App\Models\Posts;
+use App\Models\Photos;
+use App\Models\Videos;
 
 use Carbon\Carbon;
 use Egulias\EmailValidator\Exception\UnopenedComment;
@@ -277,3 +280,57 @@ Route::get('/attributes',function(){
     return $comment->commenttext;
 });
 
+//polymorphic
+
+Route::get('/user/{id}/photos',function($id){
+
+    $user=User::findOrFail($id);
+    $photos=$user->photos()->get();
+
+    foreach($photos as $photo){
+       echo  $photo->path."<br>";
+    }
+});
+
+Route::get('/posts/{id}/photos',function($id){
+
+    $post=Posts::findOrFail($id);
+    $photos=$post->photos()->get();
+
+    foreach($photos as $photo){
+       echo  $photo->path."<br>";
+    }
+});
+
+Route::get('/photos/{id}/belongto',function($id){
+
+    $photo=Photos::findOrFail($id);
+   return $image=$photo->imageable()->get();
+
+
+});
+//Polymorphic Many to Many
+Route::get('/post/{id}/tags',function($id){
+
+    $post=Posts::findOrFail($id);
+
+    $tags=$post->tags;
+    echo $post->name. 'tags is : ';
+
+    foreach($tags as $tag){
+        echo $tag->name."<br>";
+    }
+
+});
+
+Route::get('/video/{id}/tags',function($id){
+
+    $video=Videos::findOrFail($id);
+
+    $tags=$video->tags;
+   echo $video->name. '  tags is : ';
+    foreach($tags as $tag){
+        echo $tag->name."<br>";
+    }
+
+});
