@@ -5,6 +5,8 @@ use App\Roles;
 use App\Models\Posts;
 use App\Models\Photos;
 use App\Models\Videos;
+use App\Models\Tags;
+use App\Models\Taggables;
 
 use Carbon\Carbon;
 use Egulias\EmailValidator\Exception\UnopenedComment;
@@ -76,11 +78,9 @@ Route::get('/comments/insert', function () {
     Comments::create([
         'commenttext'=>'hasan text comments',
         'user_id'=>'7',
-
     ]);
 
 });
-
 
 
 Route::get('/users/delete/{id}', function ($id) {
@@ -88,8 +88,8 @@ Route::get('/users/delete/{id}', function ($id) {
     $user=User::find($id);
     $user->delete();
 
-
 });
+
 Route::get('/users/delete2/{id}', function ($id) {
 
     User::destroy($id);
@@ -315,7 +315,7 @@ Route::get('/post/{id}/tags',function($id){
     $post=Posts::findOrFail($id);
 
     $tags=$post->tags;
-    echo $post->name. 'tags is : ';
+    echo $post->title. '<br> tags is : ';
 
     foreach($tags as $tag){
         echo $tag->name."<br>";
@@ -328,9 +328,148 @@ Route::get('/video/{id}/tags',function($id){
     $video=Videos::findOrFail($id);
 
     $tags=$video->tags;
-   echo $video->name. '  tags is : ';
+   echo "video name".$video->name."<br>";
     foreach($tags as $tag){
-        echo $tag->name."<br>";
+        echo '  tags is : '. $tag->name."<br>";
     }
 
 });
+
+Route::get('/tag/{id}/videos',function($id){
+
+    $tags=Tags::findOrFail($id);
+
+    $videos=$tags->videos;
+
+   echo "tag name : ".$tags->name."<br>";
+    foreach($videos as $video){
+        echo '  video is : '. $video->name."<br>";
+    }
+
+});
+
+
+//CRUD Polymorphics
+
+Route::get('/create/postphoto/{id}',function($id){
+
+    $posts= Posts::findOrFail($id);
+    if($posts->photos()->create([
+        'path'=>'phototest3.png'
+    ])){
+        echo "Your create photo successfully";
+    }else{
+        echo "Your create photo NOT successfully";
+    }
+
+});
+//Insert
+Route::get('/create/userphoto/{id}',function($id){
+
+    $user= User::findOrFail($id);
+    if($user->photos()->create([
+        'path'=>'phototest14.png'
+    ])){
+        echo "Your create photo successfully";
+    }else{
+        echo "Your create photo NOT successfully";
+    }
+
+});
+//Update
+Route::get('/update/postphoto/{id}',function($id){
+
+    $post= Posts::findOrFail($id);
+    $photo=$post->photos()->whereId(12)->first();
+    $photo->path="updated.jpg";
+    if($photo->save()){
+        echo "Your Update photo successfully";
+    }else{
+        echo "Your Update photo NOT successfully";
+    }
+
+});
+
+//Delete
+Route::get('/delete/postphoto/{id}',function($id){
+
+    $post= Posts::findOrFail($id);
+    $photo=$post->photos()->whereId(12)->first();
+
+    if($photo->delete()){
+        echo "Your  photo Deleted successfully";
+    }else{
+        echo "Your  photo NOT Deleted successfully";
+    }
+
+});
+
+//Read
+Route::get('/read/postphoto/{id}',function($id){
+
+    $post= Posts::findOrFail($id);
+    $photos=$post->photos()->get();
+
+    foreach($photos as $photo){
+      echo "photo : ".$photo->path."<br>";
+    }
+
+});
+
+//Deassign
+Route::get('/deassign/photo',function(){
+
+    $photo= Photos::findOrFail(13);
+    $photo->imaggable_id=0;
+    $photo->imaggable_type="";
+    if($photo->save())
+    return "true";
+});
+
+// Polymorphic Many to Many
+
+//Create (Insert)
+Route::get('/create/tag/post',function(){
+
+    $posts= Posts::create(['title'=>"many to many create2",'content'=>"test post many to many plymorphic2"]);
+    $tag=Tags::findOrFail(3);
+
+    if($posts->tags()->save($tag))
+    return "true";
+});
+
+//Read
+
+Route::get('/read/tag/post',function(){
+
+    $posts= Posts::findOrFail(1);
+    foreach($posts->tags as $tag){
+    echo $tag->name."<br>";
+    }
+
+});
+
+//   email
+//Read
+
+Route::get('/sendmail',function(){
+
+   $data=[
+       'title'=>'hello I am admin',
+       'content'=>"test command and text for send mail.... programmersho.com"
+   ];
+   Mail::send('emails.email', $data, function ($message) {
+       $message->from('alij.work@programmersho.com', 'ali jannati');
+       $message->sender('john@johndoe.com', 'John Doe');
+       $message->to('sadeghj.work@gmail.com', 'sadegh jannati');
+      // $message->cc('john@johndoe.com', 'John Doe');
+     //  $message->bcc('john@johndoe.com', 'John Doe');
+      // $message->replyTo('john@johndoe.com', 'John Doe');
+       $message->subject('hello1');
+      // $message->priority(3);
+      // $message->attach('pathToFile');
+   });
+   echo "your email send successfully";
+
+});
+
