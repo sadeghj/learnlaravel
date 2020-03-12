@@ -51,6 +51,7 @@ Route::get('/users/insert2', function () {
         'email'=>'hasan2@local.com',
         'password'=>'adsd@334',
     ]);
+    $request->session()->flash('msg',"hello world !");
 
 });
 
@@ -218,7 +219,6 @@ Route::get('/user/{id}/commentupdate', function ($id) {
 });
 
 //delete comment with user all
-
 Route::get('/user/{id}/commentdelete', function ($id) {
     $user=User::findOrFail($id);
     $user->comments()->whereId(9)->delete();
@@ -458,10 +458,11 @@ Route::get('/sendmail',function(){
        'title'=>'hello I am admin',
        'content'=>"test command and text for send mail.... programmersho.com"
    ];
+
    Mail::send('emails.email', $data, function ($message) {
        $message->from('alij.work@programmersho.com', 'ali jannati');
-       $message->sender('john@johndoe.com', 'John Doe');
-       $message->to('sadeghj.work@gmail.com', 'sadegh jannati');
+      $message->sender('john@johndoe.com', 'John Doe');
+       $message->to('sshartmann@protonmail.com', 'sadegh jannati');
       // $message->cc('john@johndoe.com', 'John Doe');
      //  $message->bcc('john@johndoe.com', 'John Doe');
       // $message->replyTo('john@johndoe.com', 'John Doe');
@@ -473,3 +474,7 @@ Route::get('/sendmail',function(){
 
 });
 
+
+// laravel collective html
+
+Route::resource('/post/form',"PostController");

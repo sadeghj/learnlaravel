@@ -8,15 +8,14 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
+                    {{-- <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data"> --}}
+                 {!! Form::open(['method'=>'POST','url'=>route('register') ,'enctype'=>'multipart/form-data']) !!}
                         @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                               {!! Form::text( 'name','name',  old('name') , ['id'=>'name' ,'class'=>'form-control ','autocomplete'=>'name', 'autofocus'=>'autofocus','required'=>'required']) !!}
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -26,10 +25,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                              {!! Form::label('email', __('E-Mail Address'), ['class'=>'col-md-4 col-form-label text-md-right']) !!}
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                {!! Form::email( 'email',  old('email') , ['id'=>'email','class'=>'form-control ','autocomplete'=>'name', 'autofocus'=>'autofocus','required'=>'required']) !!}
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -77,14 +75,13 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                                {!! Form::submit(__('Register'), ['class'=>'btn btn-primary']) !!}
+
                             </div>
                         </div>
 
 
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
