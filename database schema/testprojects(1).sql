@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 13, 2020 at 06:25 PM
+-- Generation Time: Mar 12, 2020 at 02:29 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.2
+-- PHP Version: 7.2.24-0ubuntu0.18.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `testprojects`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `address`
+--
+
+CREATE TABLE `address` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dcription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ostan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shahr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -70,7 +87,67 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2020_03_12_074314_create_comments_table', 0),
+(5, '2020_03_12_074314_create_failed_jobs_table', 0),
+(6, '2020_03_12_074314_create_password_resets_table', 0),
+(7, '2020_03_12_074314_create_photos_table', 0),
+(8, '2020_03_12_074314_create_posts_table', 0),
+(9, '2020_03_12_074314_create_roles_table', 0),
+(10, '2020_03_12_074314_create_taggables_table', 0),
+(11, '2020_03_12_074314_create_tags_table', 0),
+(12, '2020_03_12_074314_create_users_table', 0),
+(13, '2020_03_12_074314_create_videos_table', 0),
+(14, '2020_03_12_074316_add_foreign_keys_to_comments_table', 0),
+(16, '2020_03_12_105703_create_table_address', 2),
+(17, '2020_03_12_111547_create_address_table', 0),
+(18, '2020_03_12_111547_create_comments_table', 0),
+(19, '2020_03_12_111547_create_failed_jobs_table', 0),
+(20, '2020_03_12_111547_create_password_resets_table', 0),
+(21, '2020_03_12_111547_create_photos_table', 0),
+(22, '2020_03_12_111547_create_posts_table', 0),
+(23, '2020_03_12_111547_create_roles_table', 0),
+(24, '2020_03_12_111547_create_taggables_table', 0),
+(25, '2020_03_12_111547_create_tags_table', 0),
+(26, '2020_03_12_111547_create_users_table', 0),
+(27, '2020_03_12_111547_create_videos_table', 0),
+(28, '2020_03_12_111549_add_foreign_keys_to_comments_table', 0),
+(29, '2020_03_12_112536_create_address_table', 0),
+(30, '2020_03_12_112536_create_comments_table', 0),
+(31, '2020_03_12_112536_create_failed_jobs_table', 0),
+(32, '2020_03_12_112536_create_password_resets_table', 0),
+(33, '2020_03_12_112536_create_photos_table', 0),
+(34, '2020_03_12_112536_create_posts_table', 0),
+(35, '2020_03_12_112536_create_roles_table', 0),
+(36, '2020_03_12_112536_create_taggables_table', 0),
+(37, '2020_03_12_112536_create_tags_table', 0),
+(38, '2020_03_12_112536_create_users_table', 0),
+(39, '2020_03_12_112536_create_videos_table', 0),
+(40, '2020_03_12_112537_add_foreign_keys_to_comments_table', 0),
+(41, '2020_03_12_112713_create_address_table', 0),
+(42, '2020_03_12_112713_create_comments_table', 0),
+(43, '2020_03_12_112713_create_failed_jobs_table', 0),
+(44, '2020_03_12_112713_create_password_resets_table', 0),
+(45, '2020_03_12_112713_create_photos_table', 0),
+(46, '2020_03_12_112713_create_posts_table', 0),
+(47, '2020_03_12_112713_create_roles_table', 0),
+(48, '2020_03_12_112713_create_taggables_table', 0),
+(49, '2020_03_12_112713_create_tags_table', 0),
+(50, '2020_03_12_112713_create_users_table', 0),
+(51, '2020_03_12_112713_create_videos_table', 0),
+(52, '2020_03_12_112714_add_foreign_keys_to_comments_table', 0),
+(53, '2020_03_12_112919_create_address_table', 0),
+(54, '2020_03_12_112919_create_comments_table', 0),
+(55, '2020_03_12_112919_create_failed_jobs_table', 0),
+(56, '2020_03_12_112919_create_password_resets_table', 0),
+(57, '2020_03_12_112919_create_photos_table', 0),
+(58, '2020_03_12_112919_create_posts_table', 0),
+(59, '2020_03_12_112919_create_roles_table', 0),
+(60, '2020_03_12_112919_create_taggables_table', 0),
+(61, '2020_03_12_112919_create_tags_table', 0),
+(62, '2020_03_12_112919_create_users_table', 0),
+(63, '2020_03_12_112919_create_videos123_table', 0),
+(64, '2020_03_12_112921_add_foreign_keys_to_comments_table', 0);
 
 -- --------------------------------------------------------
 
@@ -104,11 +181,13 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `imageable_id`, `imageable_type`, `path`, `created_at`, `updated_at`) VALUES
-(1, 1, 'App\\Models\\Posts', 'laravel1.jpg', '2020-02-13 03:07:39', '2020-02-13 03:07:39'),
-(2, 2, 'App\\Models\\Posts', 'laravel2.jpg', '2020-02-13 03:08:09', '2020-02-13 03:08:09'),
-(3, 9, 'App\\User', 'user1.jpg', '2020-02-13 03:08:40', '2020-02-13 03:08:40'),
-(4, 10, 'App\\User', 'user2.jpg', '2020-02-13 03:09:13', '2020-02-13 03:09:13'),
-(5, 9, 'App\\User', 'user1.jpg', '2020-02-13 11:50:24', '2020-02-13 11:49:26');
+(9, 11, 'App\\User', 'asdasd', '2020-02-18 18:56:13', '2020-02-18 18:54:52'),
+(13, 0, '', 'phototest1.png', '2020-02-18 22:04:23', '2020-02-18 18:34:23'),
+(14, 11, 'App\\User', 'phototest1.png', '2020-02-18 18:15:26', '2020-02-18 18:15:26'),
+(15, 1, 'App\\Models\\Posts', 'phototest1.png', '2020-02-18 18:22:27', '2020-02-18 18:22:27'),
+(16, 1, 'App\\Models\\Posts', 'phototest2.png', '2020-02-18 21:52:37', '2020-02-18 18:22:29'),
+(17, 1, 'App\\Models\\Posts', 'phototest3.png', '2020-02-19 03:39:47', '2020-02-19 03:39:47'),
+(18, 12, 'App\\User', 'phototest14.png', '2020-02-19 03:46:21', '2020-02-19 03:46:21');
 
 -- --------------------------------------------------------
 
@@ -129,9 +208,15 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(1, 'adsd', 'asdsdfdfs', '2020-02-13 02:46:33', '2020-02-13 02:46:33'),
-(2, 'erherh', 'herehh', '2020-02-13 02:49:15', '2020-02-13 02:49:15'),
-(3, 'fgnfgn', 'fgnr', '2020-02-13 02:49:46', '2020-02-13 02:49:46');
+(1, 'update test ', 'qsdqdqdqwd', '2020-02-18 19:39:45', '2020-02-18 16:09:45'),
+(2, 'test2', 'dqdqwdq', '2020-02-18 19:00:10', '2020-02-18 18:47:52'),
+(3, 'tinker test', 'post adding by tinker', '2020-02-18 16:00:10', '2020-02-18 16:00:10'),
+(4, ' test2 add with tinker', 'test2 content', '2020-02-18 16:04:47', '2020-02-18 16:04:47'),
+(7, 'many to many create2', 'test post many to many plymorphic2', '2020-02-19 04:05:44', '2020-02-19 04:05:44'),
+(8, 'new post with tinker', 'new contents', '2020-02-19 06:24:13', '2020-02-19 06:24:13'),
+(9, 'ali is good boy', 'ali test comment in tinker', '2020-02-19 06:29:31', '2020-02-19 06:29:31'),
+(12, 'adwq', 'qweq', '2020-03-11 08:43:44', '2020-03-11 08:43:44'),
+(15, 'test', 'test 2', '2020-03-11 08:52:13', '2020-03-11 08:52:13');
 
 -- --------------------------------------------------------
 
@@ -159,19 +244,6 @@ INSERT INTO `roles` (`id`, `name`, `discryption`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles_user`
---
-
-CREATE TABLE `roles_user` (
-  `roles_id` int(11) DEFAULT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `taggables`
 --
 
@@ -189,7 +261,9 @@ CREATE TABLE `taggables` (
 INSERT INTO `taggables` (`id`, `tags_id`, `taggable_id`, `taggable_type`) VALUES
 (1, 1, 1, 'App\\Models\\Videos'),
 (2, 2, 1, 'App\\Models\\Posts'),
-(3, 2, 1, 'App\\Models\\Videos');
+(4, 2, 1, 'APP\\Models\\Videos'),
+(7, 1, 1, 'App\\Models\\Posts'),
+(8, 3, 7, 'App\\Models\\Posts');
 
 -- --------------------------------------------------------
 
@@ -239,16 +313,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `path`) VALUES
-(9, 'sadeghj', 'sadeghj.work@gmail.com', NULL, '$2y$10$Pee3eLOG2nyxrPtY/GW5BOAPz06hH60flETdXGobS5jdXBvRHUqNK', NULL, '2020-02-12 23:15:04', '2020-02-12 23:15:04', NULL, NULL),
-(10, 's_jannati96', 'sadeghj.work@gmail.com2', NULL, '$2y$10$AOLRGVS20ZcxgkdP8SwThulM1lvXBjEm5MqCrLQrXBGyTb59pS60O', NULL, '2020-02-12 23:20:06', '2020-02-12 23:20:06', NULL, NULL);
+(11, 'sadegh', 'sadeghj.work@gmail.com', NULL, '$2y$10$LE9VF69sNP9x0kh5cy9KvurDaxHmtmEiJd0Smkth3rtcNQQCesgIK', NULL, '2020-02-18 15:16:02', '2020-02-18 15:16:02', NULL, NULL),
+(12, 'sadeghj', 'sadeghj.work@gmail.com2', NULL, '$2y$10$xxQy0wilDTsLOysAEckvleMWyYA8iy18p7RDO1cmXuMoF94A0hyj.', NULL, '2020-02-18 15:16:28', '2020-02-18 15:16:28', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `videos`
+-- Table structure for table `videos123`
 --
 
-CREATE TABLE `videos` (
+CREATE TABLE `videos123` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `path` varchar(250) NOT NULL,
@@ -257,10 +331,10 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `videos`
+-- Dumping data for table `videos123`
 --
 
-INSERT INTO `videos` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
+INSERT INTO `videos123` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
 (1, 'php.mp4', '', '2020-02-13 04:00:40', '2020-02-13 04:00:40'),
 (2, 'laravel.mp4', '', '2020-02-13 04:00:51', '2020-02-13 04:00:51'),
 (3, 'mvc.mp4', '', '2020-02-13 04:02:18', '2020-02-13 04:02:18'),
@@ -269,6 +343,12 @@ INSERT INTO `videos` (`id`, `name`, `path`, `created_at`, `updated_at`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `comments`
@@ -299,7 +379,8 @@ ALTER TABLE `password_resets`
 -- Indexes for table `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_photos_users` (`imageable_id`);
 
 --
 -- Indexes for table `posts`
@@ -312,13 +393,6 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roles_user`
---
-ALTER TABLE `roles_user`
-  ADD KEY `idx_role_user` (`roles_id`,`user_id`),
-  ADD KEY `fk_role_user_users` (`user_id`);
 
 --
 -- Indexes for table `taggables`
@@ -340,9 +414,9 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indexes for table `videos`
+-- Indexes for table `videos123`
 --
-ALTER TABLE `videos`
+ALTER TABLE `videos123`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -350,10 +424,15 @@ ALTER TABLE `videos`
 --
 
 --
+-- AUTO_INCREMENT for table `address`
+--
+ALTER TABLE `address`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
@@ -363,17 +442,17 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -383,7 +462,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `taggables`
 --
 ALTER TABLE `taggables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tags`
 --
@@ -393,11 +472,11 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT for table `videos`
+-- AUTO_INCREMENT for table `videos123`
 --
-ALTER TABLE `videos`
+ALTER TABLE `videos123`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
@@ -408,13 +487,6 @@ ALTER TABLE `videos`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `fk_comments_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `roles_user`
---
-ALTER TABLE `roles_user`
-  ADD CONSTRAINT `fk_role_user_roles` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_role_user_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
