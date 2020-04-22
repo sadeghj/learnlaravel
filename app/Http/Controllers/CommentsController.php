@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Comments;
+use App\Http\Controllers\Controller;
 use App\User;
 class CommentsController extends Controller
 {
@@ -14,7 +15,7 @@ class CommentsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -64,6 +65,48 @@ class CommentsController extends Controller
                //   return session()->all();
 
     }
+
+
+  /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function restapiindex()
+    {
+        $comments=Comments::all();
+       return response()->json($comments,200);
+    }
+
+      /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getcommnentbyid($id)
+    {
+        $comments=Comments::find($id);
+       return response()->json($comments,200);
+    }
+
+    public function commnetrestsaveapi(Request $request)
+    {
+        $comments=Comments::create($request->all());
+       return response()->json($comments,201);
+    }
+
+    public function commnetrestupdateapi(Request $request,Comments  $commnet)
+    {
+        $commnet->update($request->all());
+       return response()->json($commnet,200);
+    }
+
+    public function commnetrestdeleteapi(Request $request,Comments  $commnet)
+    {
+        $commnet->delete();
+       return response()->json(null,204);
+    }
+
 
     /**
      * Show the form for creating a new resource.

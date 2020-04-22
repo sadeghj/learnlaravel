@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::get('/commnets',function(){
+//     return "test api";
+// });
+
+Route::get('/commnets','CommentsController@restapiindex');
+Route::get('/commnets/{id}','CommentsController@getcommnentbyid');
+Route::post('/commnets','CommentsController@commnetrestsaveapi');
+Route::put('/commnets/{commnet}','CommentsController@commnetrestupdateapi');
+ Route::delete('/commnets/{commnet}','CommentsController@commnetrestdeleteapi');

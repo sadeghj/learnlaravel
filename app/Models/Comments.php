@@ -9,6 +9,8 @@ class Comments extends Model
 {
 
  use SoftDeletes;
+ public $timestamps=false;
+
  protected  $fillable=['commenttext','user_id','created_at','fileimage'];
  protected $date=['deleted_at'];
 
